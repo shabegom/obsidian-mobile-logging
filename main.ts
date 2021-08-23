@@ -45,8 +45,7 @@ async function monkeyPatchConsole(plugin: Plugin) {
 		logs.push(String(message));
 	  }
 
-	const newLogFileContent = `\n ${moment().format("HH:mm")} ${logs.join(" ")}`
-	await plugin.app.vault.modify(logTFile, newLogFileContent)
+	await plugin.app.vault.modify(logTFile, logs.join(" "))
 	};
   
 	console.debug = logMessages("debug");
@@ -74,7 +73,13 @@ class ConsoleModal extends Modal {
 			component.setButtonText('Submit')
 			component.onClick(e => {
 				const func = Function(`return ${logValue}`)
-				console.log(func())
+				const value = func()
+				if (typeof value === 'object') {
+					console.log(JSON.stringify(value, null, 2))
+				} else {
+					console.log(value)
+				}
+				
 				this.close()
 			})
 		})
