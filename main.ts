@@ -36,7 +36,6 @@ export default class MobileLogging extends Plugin {
 
 // Call this method inside your plugin's `onLoad` function
 async function monkeyPatchConsole(plugin: Plugin) {
-   if (!plugin.app.isMobile) return
 	const logs: string[] = [];
 	const logMessages = (prefix: string) => async (...messages: unknown[]) => {
 	const logTFile = plugin.app.vault.getAbstractFileByPath('Log.md') as TFile;
