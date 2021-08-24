@@ -5,6 +5,7 @@ export default class MobileLogging extends Plugin {
 
 	async onload() {
 		console.log('loading mobile logging plugin');
+		if (this.app.isMobile) {
 		monkeyPatchConsole(this)
 
 		this.addCommand({
@@ -24,6 +25,7 @@ export default class MobileLogging extends Plugin {
 				return false;
 			}
 		});
+	}
 
 	}
 
