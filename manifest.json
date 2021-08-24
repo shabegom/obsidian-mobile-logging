@@ -1,7 +1,7 @@
 {
 	"id": "mobile-logger",
 	"name": "Mobile Logging",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"minAppVersion": "0.9.12",
 	"description": "Logging for Obsidian Mobile",
 	"author": "shabegom",
